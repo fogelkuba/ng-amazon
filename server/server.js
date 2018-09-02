@@ -8,6 +8,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('dev'));
 
+app.get('/', (req, res, next) => {
+    res.json({
+        user: 'Jay Eff',
+    })
+});
+
 app.listen(3030, (err) => {
     console.log('magic happens on port 3030, update');
 });
