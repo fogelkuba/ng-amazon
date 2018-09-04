@@ -13,8 +13,11 @@ export class AppComponent {
         return localStorage.getItem('token');
     }
 
+    toggleCollapse() {
+        this.isCollapsed = !this.isCollapsed;
+    }
+
     collapse() {
-        // this.isCollapsed = !this.isCollapsed;
         this.isCollapsed = true;
     }
 
