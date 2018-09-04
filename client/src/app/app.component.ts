@@ -14,7 +14,8 @@ export class AppComponent {
     }
 
     collapse() {
-        this.isCollapsed = !this.isCollapsed;
+        // this.isCollapsed = !this.isCollapsed;
+        this.isCollapsed = true;
     }
 
     closeDropdown(dropdown) {
@@ -26,6 +27,6 @@ export class AppComponent {
     }
 
     search() {
-        
+
     }
 }
