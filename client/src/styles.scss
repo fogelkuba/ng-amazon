@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+$main: #323f3e;
+
+a {
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    color: #ffc107;
+  }
+}
+
+.bg-main {
+  background-clip: $main;
+}
+
+button {
+  cursor: pointer;
+}
