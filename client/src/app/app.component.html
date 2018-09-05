@@ -43,28 +43,40 @@
                                (click)="closeDropdown(); collapse()"
                                routerLink="/profile"
                                class="dropdown-item">
-                                <i class="fa fa-user-circle" aria-hidden="true"></i>Profile
+                                <i class="fa fa-user-circle"
+                                   aria-hidden="true"></i>
+                                Profile
                             </a>
                             <a *ngIf="!token"
                                (click)="closeDropdown(); collapse()"
                                routerLink="/login"
                                class="dropdown-item">
-                                <i class="fa fa-user-key" aria-hidden="true"></i>Login
+                                <i class="fa fa-user-key"
+                                   aria-hidden="true"></i>
+                                Login
                             </a>
                             <a *ngIf="token"
                                (click)="closeDropdown(); collapse(); logout()"
                                class="dropdown-item">
-                                <i class="fa fa-user-key" aria-hidden="true"></i>Logout
+                                <i class="fa fa-user-key"
+                                   aria-hidden="true"></i>
+                                Logout
                             </a>
                             <a *ngIf="!token"
                                (click)="closeDropdown(); collapse()"
-                               routerLink="/profile"
+                               routerLink="/register"
                                class="dropdown-item">
-                                <i class="fa fa-user-circle" aria-hidden="true"></i>Profile
+                                <i class="fa fa-user-group"
+                                   aria-hidden="true"></i>
+                                Register
                             </a>
-
-
                         </div>
+                    </li>
+                    <li class="nav-item ml-0 ml-md-2">
+                        <a (click)="collapse()"
+                           routerLink="/cart"
+                           routerLinkActive="active"
+                           class="nav-link">Categories</a>
                     </li>
                 </ul>
             </div>
