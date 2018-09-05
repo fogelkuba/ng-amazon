@@ -6,6 +6,13 @@
     <button class="navbar-toggler" (click)="toggleCollapse()">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <div [ngbCollapse]="isCollapsed"
+         style="align-items: left; margin-left: 50px"
+         class="collapse navbar-collapse flex-column"
+         id="navbarNav"
+    >
+
+    </div>
   </div>
 </nav>
 
