@@ -38,6 +38,13 @@
               <i class="fa fa-user mr-1"></i>
               <span *ngIf="!token">Account</span>
             </a>
+            <div ngbDropdownMenu class="dropdown-menu">
+              <a *ngIf="token"
+                 (click)="closeDropdown(); collapse()"
+                 routerLink="/profile"
+                 class="dropdown-item"
+              ></a>
+            </div>
           </li>
         </ul>
       </div>
