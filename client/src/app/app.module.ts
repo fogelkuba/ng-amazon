@@ -8,11 +8,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { HomeComponent } from './home/home.component';
 import {RestApiService} from "./rest-api.service";
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        MessageComponent
     ],
     imports: [
         BrowserModule,
