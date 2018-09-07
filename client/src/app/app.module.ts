@@ -9,6 +9,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { HomeComponent } from './home/home.component';
 import {RestApiService} from "./rest-api.service";
 import { MessageComponent } from './message/message.component';
+import {DataService} from "./data.service";
 
 @NgModule({
     declarations: [
@@ -23,7 +24,7 @@ import { MessageComponent } from './message/message.component';
         HttpClientModule,
         NgbModule.forRoot()
     ],
-    providers: [RestApiService],
+    providers: [RestApiService, DataService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
