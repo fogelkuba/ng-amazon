@@ -20,10 +20,13 @@
                        class="form-control"
                        [(ngModel)]="searchTerm"
                        (keyup.enter)="search()">
-                <span id="seachBtn"
-                      class="bg-warning input-group-append"
-                      (click)="search()"><i class="fa fa-search"></i>
-        </span>
+                <div class="input-group-append">
+                     <span id="seachBtn"
+                           class="bg-warning input-group-text"
+                           (click)="search()">
+                         <i class="fa fa-search"></i>
+                </span>
+                </div>
             </div>
             <div class="w-100">
                 <ul class="nav navbar-nav">
