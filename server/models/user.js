@@ -47,3 +47,5 @@ UserSchema.methods.gravatar = function (size) {
         return 'https://gravatar.com/avatar/' + md5 + '?s' + size + '&d=retro';
     }
 };
+
+module.exports = mongoose.model('User', UserSchema);
