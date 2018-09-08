@@ -8,7 +8,11 @@ router.post('/signup', (req, res, next) => {
     let user = new User();
     user.name = req.body.name;
     user.password = req.body.password;
-    user.mail = req.body.mail;
+    user.email = req.body.mail;
+    user.picture = user.gravatar();
+    user.isSeller = req.body.isSeller;
+
+    User.findOne({email: req.body.email})
 });
 
 module.exports = router;
