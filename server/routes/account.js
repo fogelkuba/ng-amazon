@@ -12,7 +12,16 @@ router.post('/signup', (req, res, next) => {
     user.picture = user.gravatar();
     user.isSeller = req.body.isSeller;
 
-    User.findOne({email: req.body.email})
+    User.findOne({email: req.body.email}, (err,user) => {
+        if (user) {
+            res.json({
+                success: false,
+                message: 'Account with this mail already exists'
+            })
+        } else {
+            user.save();
+        }
+    })
 });
 
 module.exports = router;
