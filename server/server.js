@@ -21,11 +21,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('dev'));
 app.use(cors());
 
-app.get('/', (req, res, next) => {
-    res.json({
-        user: 'Jay Eff',
-    })
-});
+// app.get('/', (req, res, next) => {
+//     res.json({
+//         user: 'Jay Eff',
+//     })
+// });
 
 app.listen(config.port, err => {
     console.log(`magic happens on awesome port ${config.port}, update`);
