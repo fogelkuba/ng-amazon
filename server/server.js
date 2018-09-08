@@ -27,6 +27,9 @@ app.use(cors());
 //     })
 // });
 
+const userRoutes = require('./routes/account');
+app.use('/api/accounts', userRoutes);
+
 app.listen(config.port, err => {
     console.log(`magic happens on awesome port ${config.port}, update`);
 });
