@@ -31,5 +31,8 @@ const userRoutes = require('./routes/account');
 app.use('/api/accounts', userRoutes);
 
 app.listen(config.port, err => {
-    console.log(`magic happens on awesome port ${config.port}, update`);
+    console.log("\x1b[33m", `App working on: ${config.port}, update`);
+    if (err) {
+        console.log("\x1b[41m", err);
+    }
 });
