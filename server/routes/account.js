@@ -21,13 +21,11 @@ router.post('/signup', (req, res, next) => {
             })
         } else {
             user.save();
-
             let token = jwt.sign({
                 user: user
             }, config.secret, {
                 expiresIn: '7d'
             });
-
             res.json({
                 success: true,
                 message: 'Token granted',
@@ -51,7 +49,7 @@ router.post('/login', (req, res, next) => {
             });
 
         } else if (user) {
-            let validPassword = user.comparePassword(req.body.password);
+            let validPassword = user.comparePasswords(req.body.password);
             if (!validPassword) {
                 res.json({
                     success: false,
