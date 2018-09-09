@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {DataService} from "../data.service";
 import {RestApiService} from "../rest-api.service";
+import {RegistrationService} from "./registration.service";
 
 @Component({
     selector: 'app-registration',
@@ -20,11 +21,16 @@ export class RegistrationComponent implements OnInit {
     constructor(
         private router: Router,
         private data: DataService,
-        private api: RestApiService
+        private api: RestApiService,
+        private registration: RegistrationService
     ) {
     }
 
     ngOnInit() {
+        this.email = 'abc@abc2.com';
+        this.password = 'abc123';
+        this.name = 'John Abc';
+        this.isSeller = false;
     }
 
     validate() {
@@ -34,13 +40,27 @@ export class RegistrationComponent implements OnInit {
 
     async registerUser() {
         this.btnDisabled = true;
-        try {
-            if (this.validate()) {
-                const data = await this.api.post(
-                    '',
-                )
-            }
-        }
+
+        let credentials = {
+            name: this.name,
+            email: this.email,
+            password: this.password,
+            isSeller: this.isSeller
+        };
+
+        this.registration.post(credentials)
+            .subscribe(
+                (response) => {
+                    if (response['success']) {
+                        localStorage.setItem('token', response['token'])
+                        this.data.success('Registration successful')
+                    } else {
+                        console.log(response['message']);
+                    }
+                }
+            );
+
+        this.btnDisabled = false;s
     }
 
 }
