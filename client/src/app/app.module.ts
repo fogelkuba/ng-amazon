@@ -11,6 +11,7 @@ import {RestApiService} from "./rest-api.service";
 import { MessageComponent } from './message/message.component';
 import {DataService} from "./data.service";
 import { RegistrationComponent } from './registration/registration.component';
+import {RegistrationService} from "./registration/registration.service";
 
 @NgModule({
     declarations: [
@@ -26,7 +27,7 @@ import { RegistrationComponent } from './registration/registration.component';
         HttpClientModule,
         NgbModule.forRoot()
     ],
-    providers: [RestApiService, DataService],
+    providers: [RestApiService, DataService, RegistrationService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
