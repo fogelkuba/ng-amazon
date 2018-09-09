@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.email = 'abc@abc2.com';
+        this.email = 'abc@abc5.com';
         this.password = 'abc123';
         this.name = 'John Abc';
         this.isSeller = false;
@@ -56,8 +56,9 @@ export class RegistrationComponent implements OnInit {
             .subscribe(
                 (response) => {
                     if (response['success']) {
-                        localStorage.setItem('token', response['token'])
-                        this.data.success('Registration successful')
+                        localStorage.setItem('token', response['token']);
+                        this.data.success('Registration successful');
+                        console.log(response['message']);
                     } else {
                         const err = response['message'];
                         console.log(err);
