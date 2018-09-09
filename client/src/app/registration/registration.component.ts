@@ -60,7 +60,7 @@ export class RegistrationComponent implements OnInit {
                 }
             );
 
-        this.btnDisabled = false;s
+        this.btnDisabled = false;
     }
 
 }
