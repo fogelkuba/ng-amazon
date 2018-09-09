@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
+  name = '';
+  email = '';
+  password = '';
+  password1 = '';
+
 
   constructor() { }
 
