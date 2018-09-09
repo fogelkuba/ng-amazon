@@ -34,8 +34,12 @@ export class RegistrationComponent implements OnInit {
     }
 
     validate() {
-        //TODO ngForm validation
-        return true;
+        // TODO ngForm validation
+        let validation = true;
+        if (this.name == '' || this.email == '' || this.password == '' || this.passwordConfirm == '') {
+            validation = false;
+        }
+        return validation;
     }
 
     async registerUser() {
@@ -55,7 +59,9 @@ export class RegistrationComponent implements OnInit {
                         localStorage.setItem('token', response['token'])
                         this.data.success('Registration successful')
                     } else {
-                        console.log(response['message']);
+                        const err = response['message'];
+                        console.log(err);
+                        this.data.error(err);
                     }
                 }
             );
