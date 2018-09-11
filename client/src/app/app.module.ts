@@ -30,5 +30,4 @@ import {RegistrationService} from "./registration/registration.service";
     providers: [RestApiService, DataService, RegistrationService],
     bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}
