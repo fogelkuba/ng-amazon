@@ -20,10 +20,12 @@ export class DataService {
       this.messageType = 'danger';
       this.message = message;
   }
+
   success(message: string) {
       this.messageType = 'success';
       this.message = message;
   }
+  
   warning(message: string) {
       this.messageType = 'warning';
       this.message = message;
