@@ -64,9 +64,12 @@ export class RegistrationComponent implements OnInit {
                         console.log(err);
                         this.data.error(err);
                     }
+                },
+                (error) => {
+                    const err = error['message'];
+                    this.data.error(err);
                 }
             );
-
         this.btnDisabled = false;
     }
 }
