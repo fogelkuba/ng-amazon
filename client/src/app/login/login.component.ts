@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   email = '';
   password = '';
-  
+
   btnDisabled = false;
 
   constructor(
@@ -23,6 +23,18 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  validate() {
+    if (this.email) {
+      if (this.password) {
+        return true
+      } else {
+        this.data.error('Password is not provided')
+      }
+    } else {
+      this.data.error('Email is nto entered')
+    }
   }
 
 }
