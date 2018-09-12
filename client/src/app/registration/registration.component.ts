@@ -57,11 +57,6 @@ export class RegistrationComponent implements OnInit {
         } else {
             this.data.error('You must enter name');
         }
-        // let validation = true;
-        // if (this.name == '' || this.email == '' || this.password == '' || this.passwordConfirm == '') {
-        //     validation = false;
-        // }
-        // return validation;
     }
 
     async registerUser() {
