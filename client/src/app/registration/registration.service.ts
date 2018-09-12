@@ -11,8 +11,8 @@ export class RegistrationService {
 
     private url = 'http://localhost:3030/api/accounts/signup';
 
-    post(credentials) {
-        return this.http.post(this.url, credentials)
+    post(userCredentials) {
+        return this.http.post(this.url, userCredentials)
             .pipe(response => response)
     }
 }
