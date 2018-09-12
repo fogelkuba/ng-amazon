@@ -14,6 +14,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import {RegistrationService} from "./registration/registration.service";
 import { LoginComponent } from './login/login.component';
 import {LoginService} from "./login/login.service";
+import {AuthGuardService} from "./auth-guard.service";
 
 @NgModule({
     declarations: [
@@ -30,7 +31,12 @@ import {LoginService} from "./login/login.service";
         HttpClientModule,
         NgbModule.forRoot()
     ],
-    providers: [RestApiService, DataService, RegistrationService, LoginService],
+    providers: [RestApiService,
+                DataService,
+                RegistrationService,
+                LoginService,
+                AuthGuardService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
