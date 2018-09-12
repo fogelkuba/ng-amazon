@@ -25,13 +25,13 @@ export class AppComponent {
     }
 
     closeDropdown(dropdown) {
-        dropdown.close();
+        // dropdown.close();
     }
 
     logout() {
         // this.data.user = {};
         localStorage.clear();
-        this.router.navigate([''])
+        this.router.navigate(['/'])
     }
 
     search() {

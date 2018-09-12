@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.email = 'abc@abc5.com';
+        this.password = 'abc123';
     }
 
     validate() {
