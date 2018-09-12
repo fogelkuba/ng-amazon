@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         };
 
         if (this.validate()) {
-            this.login(credentials)
+            this.login.post(credentials);
         }
     }
 
