@@ -1,40 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {DataService} from "../data.service";
 import {LoginService} from "./login.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
-  email = '';
-  password = '';
+    email = '';
+    password = '';
 
-  btnDisabled = false;
+    btnDisabled = false;
 
-  constructor(
-      private router: Router,
-      private data: DataService,
-      private login: LoginService
-
-  ) { }
-
-  ngOnInit() {
-  }
-
-  validate() {
-    if (this.email) {
-      if (this.password) {
-        return true
-      } else {
-        this.data.error('Password is not provided')
-      }
-    } else {
-      this.data.error('Email is nto entered')
+    constructor(
+        private router: Router,
+        private data: DataService,
+        private login: LoginService
+    ) {
     }
-  }
+
+    ngOnInit() {
+    }
+
+    validate() {
+        if (this.email) {
+            if (this.password) {
+                return true
+            } else {
+                this.data.error('Password is not provided')
+            }
+        } else {
+            this.data.error('Email is nto entered')
+        }
+    }
+
+    async loginUser() {
+        this.btnDisabled = true;
+
+        let credentials = {
+            email: this.email,
+            password: this.password
+        };
+
+        if (this.validate()) {
+            this.login(credentials)
+        }
+    }
 
 }

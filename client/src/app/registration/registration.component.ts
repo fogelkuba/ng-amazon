@@ -34,8 +34,6 @@ export class RegistrationComponent implements OnInit {
     }
 
     validate() {
-        // TODO ngForm validation
-
         if (this.name) {
             if(this.email){
                 if(this.password){
@@ -69,26 +67,8 @@ export class RegistrationComponent implements OnInit {
             isSeller: this.isSeller
         };
 
-
         if (this.validate()) {
             this.registration.post(credentials)
-                .subscribe(
-                    (response) => {
-                        if (response['success']) {
-                            localStorage.setItem('token', response['token']);
-                            this.data.success('Registration successful');
-                            // console.log(response['message']);
-                        } else {
-                            const err = response['message'];
-                            // console.log(err);
-                            this.data.error(err);
-                        }
-                    },
-                    (error) => {
-                        const err = error['message'];
-                        this.data.error(err);
-                    }
-                );
         }
 
         this.btnDisabled = false;
