@@ -7,7 +7,7 @@ import {DataService} from "./data.service";
 })
 export class RestApiService {
 
-    constructor(private http: HttpClient,  public data: DataService) {
+    constructor(private http: HttpClient, public data: DataService) {
     }
 
     getHeaders() {
@@ -18,21 +18,22 @@ export class RestApiService {
     get(url: string) {
         return this.http.get(url)
             .subscribe(
-            (response) => {
-                if (response['success']) {
-                    // localStorage.setItem('token', response['token']);
-                    // this.data.success('Registration successful');
-                    // console.log(response['message']);
-                } else {
-                    // const err = response['message'];
-                    // console.log(err);
-                    // this.data.error(err);
+                (response) => {
+                    if (response['success']) {
+                        // localStorage.setItem('token', response['token']);
+                        // this.data.success('Registration successful');
+                        // console.log(response['message']);
+                    } else {
+                        // const err = response['message'];
+                        // console.log(err);
+                        // this.data.error(err);
+                    }
+                },
+                (error) => {
+                    const err = error['message'];
+                    this.data.error(err);
                 }
-            },
-            (error) => {
-                const err = error['message'];
-                this.data.error(err);
-            };
+            )
     }
 
     post(link: string, body: any) {

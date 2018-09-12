@@ -8,7 +8,8 @@ import {RestApiService} from "../rest-api.service";
 })
 export class RegistrationService {
 
-    constructor(private http: HttpClient,  public data: DataService, private restApi: RestApiService) {}
+    constructor(private http: HttpClient, public data: DataService, private restApi: RestApiService) {
+    }
 
     private url = 'http://localhost:3030/api/accounts/signup';
 
