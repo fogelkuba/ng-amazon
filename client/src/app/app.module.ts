@@ -13,6 +13,7 @@ import {DataService} from "./data.service";
 import { RegistrationComponent } from './registration/registration.component';
 import {RegistrationService} from "./registration/registration.service";
 import { LoginComponent } from './login/login.component';
+import {LoginService} from "./login/login.service";
 
 @NgModule({
     declarations: [
@@ -29,7 +30,7 @@ import { LoginComponent } from './login/login.component';
         HttpClientModule,
         NgbModule.forRoot()
     ],
-    providers: [RestApiService, DataService, RegistrationService],
+    providers: [RestApiService, DataService, RegistrationService, LoginService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
