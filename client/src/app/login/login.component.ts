@@ -48,6 +48,8 @@ export class LoginComponent implements OnInit {
         if (this.validate()) {
             this.login.post(credentials);
         }
+
+        this.btnDisabled = false;
     }
 
 }
