@@ -42,7 +42,7 @@ export class RegistrationComponent implements OnInit {
                     if(this.passwordConfirm){
                         if(this.password && this.passwordConfirm){
                             return true;
-                        } else{
+                        } else {
                             this.data.error('Password do not match');
                         }
                     } else {
