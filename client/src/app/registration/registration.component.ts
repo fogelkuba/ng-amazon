@@ -27,10 +27,10 @@ export class RegistrationComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.email = 'abc@abc5.com';
-        this.password = 'abc123';
-        this.name = 'John Abc';
-        this.isSeller = false;
+        // this.email = 'abc@abc5.com';
+        // this.password = 'abc123';
+        // this.name = 'John Abc';
+        // this.isSeller = false;
     }
 
     validate() {
