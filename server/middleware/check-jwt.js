@@ -22,4 +22,4 @@ module.exports = function(req, res, next) {
             message: 'No token provided'
         })
     }
-}
+};
