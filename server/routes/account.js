@@ -5,7 +5,6 @@ const User = require('../models/user');
 const config = require('../config');
 
 router.post('/signup', (req, res, next) => {
-    // console.log(req.body);
     let user = new User();
     user.name = req.body.name;
     user.password = req.body.password;
