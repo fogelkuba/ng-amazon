@@ -112,7 +112,7 @@ router.route('/address')
         User.findOne({ _id: req.decoded.user._id}, (err, user) => {
             res.json({
                 success: true,
-                address: user.address,
+                adress: user.adress,
                 message: 'Profile found'
             });
         });
