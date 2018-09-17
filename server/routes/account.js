@@ -132,7 +132,7 @@ router.route('/address')
                 user.save();
                 res.json({
                     success: true,
-                    message: 'User adresss edited'
+                    message: 'User adress edited'
                 })
             } else {
                 res.json({
