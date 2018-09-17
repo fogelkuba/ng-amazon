@@ -89,8 +89,9 @@ router.route('/profile')
             if (req.body.email) user.email = req.body.email;
             if (req.body.password) user.password = req.body.password;
             user.isSeller = req.body.isSeller;
-            
-            if (req.body) {
+
+            console.log(req.body);
+            if (Object.keys(req.body).length) {
                 user.save();
                 res.json({
                     success: true,
