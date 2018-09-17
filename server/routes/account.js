@@ -159,6 +159,7 @@ router.route('/address')
             user.save();
             res.json({
                 success: true,
+                addressMsg: user.address,
                 message: 'Successfully edited your address'
             });
         });
