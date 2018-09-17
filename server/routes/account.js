@@ -112,7 +112,7 @@ router.route('/address')
         User.findOne({ _id: req.decoded.user._id}, (err, user) => {
             res.json({
                 success: true,
-                address: user.address,
+                addressMsg: user.address,
                 message: 'Profile with address found'
             });
         });
@@ -121,8 +121,8 @@ router.route('/address')
         User.findOne({_id: req.decoded.user._id}, (err, user) => {
             if (err) return next(err);
 
-             req.body.address1 ? user.address.address1 = req.body.address1 : '';
-             req.body.address2 ? user.address.address2 = req.body.address2 : '';
+             req.body.addrFir ? user.address.addrFir = req.body.addrFir : '';
+             req.body.addrSec ? user.address.addrSec = req.body.addrSec : '';
              req.body.city ? user.address.city = req.body.city : '';
              req.body.state ? user.address.state = req.body.state : '';
              req.body.country ? user.address.country = req.body.country : '';
@@ -131,7 +131,7 @@ router.route('/address')
             if (Object.keys(req.body).length) {
                 user.save();
                 res.json({
-                    address: user.address,
+                    addressMsg: user.address,
                     success: true,
                     message: 'User address edited'
                 })
