@@ -83,7 +83,7 @@ router.route('/profile')
         });
     })
     .post(checkJWT, (req, res, next) => {
-        User.findOne({_id: req.decoded.user._id}, err, user => {
+        User.findOne({_id: req.decoded.user._id}, (err, user) => {
             if (err) return next(err);
             if (req.body.name) user.name = req.body.name;
             if (req.body.email) user.email = req.body.email;
@@ -95,6 +95,8 @@ router.route('/profile')
                 success: true,
                 message: 'User profile edited'
             })
+
+            console.log(req);
         })
     });
 
