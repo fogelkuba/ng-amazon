@@ -17,7 +17,7 @@ router.post('/signup', (req, res, next) => {
         if (existingUser) {
             res.json({
                 success: false,
-                message: 'Account with this mail already exists'
+                message: 'Account with this mail alreaddy exists'
             })
         } else {
             user.save();
@@ -107,13 +107,13 @@ router.route('/profile')
         })
     });
 
-router.route('/adress')
+router.route('/address')
     .get(checkJWT, (req, res, next) => {
         User.findOne({ _id: req.decoded.user._id}, (err, user) => {
             res.json({
                 success: true,
-                adress: user.adress,
-                message: 'Profile with adress found'
+                address: user.address,
+                message: 'Profile with address found'
             });
         });
     })
@@ -121,18 +121,18 @@ router.route('/adress')
         User.findOne({_id: req.decoded.user._id}, (err, user) => {
             if (err) return next(err);
 
-            if (req.body.adress1) user.adress.adress1 = req.body.adress1;
-            if (req.body.adress2) user.adress.adress2 = req.body.adress2;
-            if (req.body.city) user.adress.city = req.body.city;
-            if (req.body.state) user.adress.state = req.body.state;
-            if (req.body.country) user.adress.country = req.body.country;
-            if (req.body.postalCode) user.adress.postalCode = req.body.postalCode;
-            
+            if (req.body.address1) user.address.address1 = req.body.address1;
+            if (req.body.address2) user.address.address2 = req.body.address2;
+            if (req.body.city) user.address.city = req.body.city;
+            if (req.body.state) user.address.state = req.body.state;
+            if (req.body.country) user.address.country = req.body.country;
+            if (req.body.postalCode) user.address.postalCode = req.body.postalCode;
+
             if (Object.keys(req.body).length) {
                 user.save();
                 res.json({
                     success: true,
-                    message: 'User adress edited'
+                    message: 'User address edited'
                 })
             } else {
                 res.json({
