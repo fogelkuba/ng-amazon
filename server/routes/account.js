@@ -90,13 +90,22 @@ router.route('/profile')
             if (req.body.password) user.password = req.body.password;
             user.isSeller = req.body.isSeller;
 
-            user.save();
-            res.json({
-                success: true,
-                message: 'User profile edited'
-            })
 
-            console.log(req);
+            if (req.body) {
+                user.save();
+                res.json({
+                    success: true,
+                    message: 'User profile edited'
+                })
+            } else {
+                res.json({
+                    success: true,
+                    message: 'No changes to submit'
+                })
+            }
+
+
+
         })
     });
 
