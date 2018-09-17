@@ -72,15 +72,23 @@ router.post('/login', (req, res, next) => {
     })
 });
 
-router.route('/profile').get(checkJWT, (req, res, next) => {
-    User.findOne({_id: req.decoded.user._id}, (err,user) => {
-        res.json({
-            success: true,
-            user: user,
-            message: 'Profile found'
+router.route('/profile')
+    .get(checkJWT, (req, res, next) => {
+        User.findOne({ _id: req.decoded.user._id}, (err, user) => {
+            res.json({
+                success: true,
+                user: user,
+                message: 'Profile found'
+            });
         });
+    })
+    .post(checkJWT, (req, res, next) => {
+        User.findOne({_id: req.decoded.user._id}, err, user => {
+            if (err) return next(err);
+            if (req.body.name) user.name = req.body.name;
+            if (req.body.email) user.email = req.body.email;
+            if (req.body.password) user.password = req.body.password;
+        })
     });
-})
-    .post();
 
 module.exports = router;
