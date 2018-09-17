@@ -107,7 +107,7 @@ router.route('/profile')
         })
     });
 
-router.route('/address')
+router.route('/adress')
     .get(checkJWT, (req, res, next) => {
         User.findOne({ _id: req.decoded.user._id}, (err, user) => {
             res.json({
