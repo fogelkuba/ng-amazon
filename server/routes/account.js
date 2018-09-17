@@ -121,16 +121,17 @@ router.route('/address')
         User.findOne({_id: req.decoded.user._id}, (err, user) => {
             if (err) return next(err);
 
-            if (req.body.address1) user.address.address1 = req.body.address1;
-            if (req.body.address2) user.address.address2 = req.body.address2;
-            if (req.body.city) user.address.city = req.body.city;
-            if (req.body.state) user.address.state = req.body.state;
-            if (req.body.country) user.address.country = req.body.country;
-            if (req.body.postalCode) user.address.postalCode = req.body.postalCode;
+             req.body.address1 ? user.address.address1 = req.body.address1 : '';
+             req.body.address2 ? user.address.address2 = req.body.address2 : '';
+             req.body.city ? user.address.city = req.body.city : '';
+             req.body.state ? user.address.state = req.body.state : '';
+             req.body.country ? user.address.country = req.body.country : '';
+             req.body.postalCode ? user.address.postalCode = req.body.postalCode : '';
 
             if (Object.keys(req.body).length) {
                 user.save();
                 res.json({
+                    address: user.address,
                     success: true,
                     message: 'User address edited'
                 })
