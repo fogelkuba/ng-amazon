@@ -89,8 +89,7 @@ router.route('/profile')
             if (req.body.email) user.email = req.body.email;
             if (req.body.password) user.password = req.body.password;
             user.isSeller = req.body.isSeller;
-
-
+            
             if (req.body) {
                 user.save();
                 res.json({
@@ -103,8 +102,6 @@ router.route('/profile')
                     message: 'No changes to submit'
                 })
             }
-
-
 
         })
     });
