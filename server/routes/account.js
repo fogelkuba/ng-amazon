@@ -99,7 +99,7 @@ router.route('/profile')
                 })
             } else {
                 res.json({
-                    success: true,
+                    success: false,
                     message: 'No changes to submit'
                 })
             }
@@ -113,7 +113,7 @@ router.route('/adress')
             res.json({
                 success: true,
                 adress: user.adress,
-                message: 'Profile found'
+                message: 'Profile with adress found'
             });
         });
     })
@@ -127,7 +127,7 @@ router.route('/adress')
             if (req.body.state) user.adress.state = req.body.state;
             if (req.body.country) user.adress.country = req.body.country;
             if (req.body.postalCode) user.adress.postalCode = req.body.postalCode;
-
+            
             if (Object.keys(req.body).length) {
                 user.save();
                 res.json({
@@ -136,7 +136,7 @@ router.route('/adress')
                 })
             } else {
                 res.json({
-                    success: true,
+                    success: false,
                     message: 'No changes to submit'
                 })
             }
