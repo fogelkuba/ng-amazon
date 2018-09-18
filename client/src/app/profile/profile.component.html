@@ -20,6 +20,20 @@
         <br>
         <br>
         <a routerLink="/profile/oddress" class="btn btn-warning">Change Shipping Address</a>
+        <br>
+        <br>
+        <div *ngIf="data.user.isSeller">
+          <p class="lead">Seller Menu</p>
+          <hr>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <a routerLink="/profile/postproduct" class="btn btn-warning">Post Product for Sale</a>
+            </div>
+            <div class="col-md-6 mb-3">
+              <a routerLink="/profile/myproducts" class="btn btn-warning">My Sale</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

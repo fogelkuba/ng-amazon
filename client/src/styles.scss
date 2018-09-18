@@ -24,3 +24,14 @@ button {
 section {
   min-height: 600px;
 }
+
+h5 {
+  overflow-wrap: break-word;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 2rem
+}
