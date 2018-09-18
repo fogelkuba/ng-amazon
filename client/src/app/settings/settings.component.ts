@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from "../data.service";
+import {RestApiService} from "../rest-api.service";
 
 @Component({
   selector: 'app-settings',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+  btnDisabled = false;
+  currentSettings: any;
 
-  constructor() { }
+  constructor(public data: DataService, private rest: RestApiService) { }
 
   ngOnInit() {
   }
