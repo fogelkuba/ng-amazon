@@ -15,6 +15,7 @@ import {RegistrationService} from "./registration/registration.service";
 import { LoginComponent } from './login/login.component';
 import {LoginService} from "./login/login.service";
 import {AuthGuardService} from "./auth-guard.service";
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import {AuthGuardService} from "./auth-guard.service";
         HomeComponent,
         MessageComponent,
         RegistrationComponent,
-        LoginComponent
+        LoginComponent,
+        ProfileComponent
     ],
     imports: [
         BrowserModule,
