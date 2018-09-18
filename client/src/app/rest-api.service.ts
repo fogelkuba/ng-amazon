@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {DataService} from "./data.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class RestApiService {
 
-    constructor(private http: HttpClient, public data: DataService) {
+    constructor(private http: HttpClient) {
     }
 
     getHeaders() {
@@ -15,28 +14,11 @@ export class RestApiService {
         return token ? new HttpHeaders().set('Authorization', token) : null;
     }
 
-    get(url: string) {
-        return this.http.get(url)
-            .subscribe(
-                (response) => {
-                    if (response['success']) {
-                        // localStorage.setItem('token', response['token']);
-                        // this.data.success('Registration successful');
-                        // console.log(response['message']);
-                    } else {
-                        // const err = response['message'];
-                        // console.log(err);
-                        // this.data.error(err);
-                    }
-                },
-                (error) => {
-                    const err = error['message'];
-                    this.data.error(err);
-                }
-            )
+    get(link: string) {
+        return this.http.get(link, { headers: this.getHeaders() }).toPromise();
     }
 
     post(link: string, body: any) {
-        return this.http.post(link, body);
+        return this.http.post(link, body, { headers: this.getHeaders() }).toPromise();
     }
 }
