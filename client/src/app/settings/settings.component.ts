@@ -15,6 +15,21 @@ export class SettingsComponent implements OnInit {
   constructor(public data: DataService, private rest: RestApiService) { }
 
   ngOnInit() {
+    if (!this.data.user) {
+      this.data.getProfile();
+    }
+    this.currentSettings = Object.assign({
+        newPwd: '',
+        pwdConfirm: ''
+    }, this.data.user);
+  }
+  
+  validate(settings) {
+    if (settings['name']) {
+
+    } else {
+
+    }
   }
 
 }
