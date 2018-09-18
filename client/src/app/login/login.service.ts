@@ -23,6 +23,7 @@ export class LoginService {
                         this.data.success('Registration successful');
                         console.log(response['message']);
                         this.router.navigate(['/']);
+                        this.data.getProfile();
                     } else {
                         const err = response['message'];
                         console.log(err);
