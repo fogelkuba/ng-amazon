@@ -117,33 +117,6 @@ router.route('/address')
             });
         });
     })
-    //     .post(checkJWT, (req, res, next) => {
-    //         User.findOne({_id: req.decoded.user._id}, (err, user) => {
-    //             if (err) return next(err);
-    //
-    //              req.body.addrFir ? user.address.addrFir = req.body.addrFir : '';
-    //              req.body.addrSec ? user.address.addrSec = req.body.addrSec : '';
-    //              req.body.city ? user.address.city = req.body.city : '';
-    //              req.body.state ? user.address.state = req.body.state : '';
-    //              req.body.country ? user.address.country = req.body.country : '';
-    //              req.body.postalCode ? user.address.postalCode = req.body.postalCode : '';
-    //
-    //             if (Object.keys(req.body).length) {
-    //                 user.save();
-    //                 res.json({
-    //                     addressMsg: user.address,
-    //                     success: true,
-    //                     message: 'User address edited'
-    //                 })
-    //             } else {
-    //                 res.json({
-    //                     success: false,
-    //                     message: 'No changes to submit'
-    //                 })
-    //             }
-    //
-    //         })
-    //     });
 
     .post(checkJWT, (req, res, next) => {
         User.findOne({_id: req.decoded.user._id}, (err, user) => {
