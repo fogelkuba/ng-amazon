@@ -20,6 +20,7 @@ export class RegistrationService {
                     if (response['success']) {
                         localStorage.setItem('token', response['token']);
                         this.data.success('Registration successful');
+                        this.data.getProfile();
                         console.log(response['message']);
                     } else {
                         const err = response['message'];
