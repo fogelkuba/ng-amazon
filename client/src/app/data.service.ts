@@ -35,15 +35,17 @@ export class DataService {
     }
 
     async getProfile() {
-        try {
-            if (localStorage.getItem('token')) {
-                const data = await this.rest.get(
-                    'http://localhost:3030/api/account/profile'
-                );
-                this.user = data['user'];
-            }
-        } catch (error) {
-            this.error(error);
+        if (localStorage.getItem('token')) {
+            this.rest.get('http://localhost:3030/api/account/profile')
+                .subscribe(
+                    (response) => {
+                        console.log(response);
+                        this.user = response['user'];
+                    },
+                    (error) => {
+                        const err = error['message'];
+                        this.error(err);
+                    });
+
         }
-    }
 }

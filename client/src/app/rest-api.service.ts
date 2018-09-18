@@ -15,10 +15,10 @@ export class RestApiService {
     }
 
     get(link: string) {
-        return this.http.get(link, { headers: this.getHeaders() }).toPromise();
+        return this.http.get(link, { headers: this.getHeaders() });
     }
 
     post(link: string, body: any) {
-        return this.http.post(link, body, { headers: this.getHeaders() }).toPromise();
+        return this.http.post(link, body, { headers: this.getHeaders() });
     }
 }
