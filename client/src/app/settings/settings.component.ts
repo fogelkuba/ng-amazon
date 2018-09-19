@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { DataService } from '../data.service';
-import { RestApiService } from '../rest-api.service';
+import {DataService} from '../data.service';
+import {RestApiService} from '../rest-api.service';
 
 @Component({
     selector: 'app-settings',
@@ -12,7 +12,8 @@ export class SettingsComponent implements OnInit {
     btnDisabled = false;
     currentSettings: any;
 
-    constructor(private data: DataService, private rest: RestApiService) { }
+    constructor(private data: DataService, private rest: RestApiService) {
+    }
 
     async ngOnInit() {
         try {
@@ -60,7 +61,7 @@ export class SettingsComponent implements OnInit {
         this.btnDisabled = true;
 
         if (this.validate(this.currentSettings)) {
-             this.rest.post(
+            this.rest.post(
                 'http://localhost:3030/api/accounts/profile',
                 {
                     name: this.currentSettings['name'],
@@ -69,14 +70,14 @@ export class SettingsComponent implements OnInit {
                     isSeller: this.currentSettings['isSeller']
                 }
             ).subscribe(
-                 (response) => {
-                         response['success'] ? (this.data.getProfile(), this.data.success(response['message'])) : this.data.error(response['message']);
-                 },
-                 (error) => {
-                     const err = error['message'];
-                     this.data.error(err);
-                 }
-             );
+                (response) => {
+                    response['success'] ? (this.data.getProfile(), this.data.success(response['message'])) : this.data.error(response['message']);
+                },
+                (error) => {
+                    const err = error['message'];
+                    this.data.error(err);
+                }
+            );
 
         }
         this.btnDisabled = false;
