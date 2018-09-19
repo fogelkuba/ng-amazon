@@ -57,12 +57,8 @@ export class SettingsComponent implements OnInit {
     }
 
     async update() {
-        // this.btnDisabled = true;
-        // try {
-        //
-        // } catch (error) {
-        //     this.data.error(error['message']);
-        // }
+        this.btnDisabled = true;
+        
         if (this.validate(this.currentSettings)) {
              this.rest.post(
                 'http://localhost:3030/api/accounts/profile',
