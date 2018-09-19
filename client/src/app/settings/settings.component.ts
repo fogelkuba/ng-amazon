@@ -57,25 +57,31 @@ export class SettingsComponent implements OnInit {
     }
 
     async update() {
-        this.btnDisabled = true;
-        try {
-            if (this.validate(this.currentSettings)) {
-                const data = await this.rest.post(
-                    'http://localhost:3030/api/accounts/profile',
-                    {
-                        name: this.currentSettings['name'],
-                        email: this.currentSettings['email'],
-                        password: this.currentSettings['newPwd'],
-                        isSeller: this.currentSettings['isSeller']
-                    }
-                );
+        // this.btnDisabled = true;
+        // try {
+        //
+        // } catch (error) {
+        //     this.data.error(error['message']);
+        // }
+        if (this.validate(this.currentSettings)) {
+             this.rest.post(
+                'http://localhost:3030/api/accounts/profile',
+                {
+                    name: this.currentSettings['name'],
+                    email: this.currentSettings['email'],
+                    password: this.currentSettings['newPwd'],
+                    isSeller: this.currentSettings['isSeller']
+                }
+            ).subscribe(
+                 (response) => {
+                         response['success'] ? (this.data.getProfile(), this.data.success(response['message'])) : this.data.error(response['message']);
+                 },
+                 (error) => {
+                     const err = error['message'];
+                     this.data.error(err);
+                 }
+             );
 
-                data['success']
-                    ? (this.data.getProfile(), this.data.success(data['message']))
-                    : this.data.error(data['message']);
-            }
-        } catch (error) {
-            this.data.error(error['message']);
         }
         this.btnDisabled = false;
     }
