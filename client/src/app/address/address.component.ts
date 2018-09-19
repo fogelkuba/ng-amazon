@@ -16,14 +16,14 @@ export class AddressComponent implements OnInit {
     constructor(private data: DataService, private rest: RestApiService) {
     }
 
-    async ngOnInit() {
+    ngOnInit() {
         this.rest.get('http://localhost:3030/api/accounts/address')
             .subscribe(
                 (response) => {
                     if (JSON.stringify(response['address']) === '{}' && this.data.message === '') {
                         this.data.warning('You have not entered your shipping address. Please enter your shipping address.');
                     }
-                    this.currentAddress = response['address'];
+                    this.currentAddress = response['addressMsg'];
                 },
                 (error) => {
                     this.data.error(error['message']);
@@ -31,7 +31,7 @@ export class AddressComponent implements OnInit {
             );
     }
 
-    async updateAddress() {
+    updateAddress() {
         this.btnDisabled = true;
         this.rest.post(
             'http://localhost:3030/api/accounts/address', this.currentAddress)
