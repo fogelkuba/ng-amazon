@@ -17,39 +17,34 @@ export class AddressComponent implements OnInit {
     }
 
     async ngOnInit() {
-        try {
-            const data = await this.rest.get(
-                'http://localhost:3030/api/accounts/address'
+        this.rest.get('http://localhost:3030/api/accounts/address')
+            .subscribe(
+                (response) => {
+                    if (JSON.stringify(response['address']) === '{}' && this.data.message === '') {
+                        this.data.warning('You have not entered your shipping address. Please enter your shipping address.');
+                    }
+                    this.currentAddress = response['address'];
+                },
+                (error) => {
+                    this.data.error(error['message']);
+                }
             );
-
-            if (
-                JSON.stringify(data['address']) === '{}' &&
-                this.data.message === ''
-            ) {
-                this.data.warning(
-                    'You have not entered your shipping address. Please enter your shipping address.'
-                );
-            }
-            this.currentAddress = data['address'];
-        } catch (error) {
-            this.data.error(error['message']);
-        }
     }
 
     async updateAddress() {
         this.btnDisabled = true;
-        try {
-            const res = await this.rest.post(
-                'http://localhost:3030/api/accounts/address',
-                this.currentAddress
+        this.rest.post(
+            'http://localhost:3030/api/accounts/address', this.currentAddress)
+            .subscribe(
+                (response) => {
+                    response['success']
+                        ? (this.data.success(response['message']), this.data.getProfile())
+                        : this.data.error(response['message']);
+                },
+                (error) => {
+                    this.data.error(error['message']);
+                }
             );
-
-            res['success']
-                ? (this.data.success(res['message']), await this.data.getProfile())
-                : this.data.error(res['message']);
-        } catch (error) {
-            this.data.error(error['message']);
-        }
         this.btnDisabled = false;
     }
 
