@@ -29,9 +29,11 @@ app.use(cors());
 
 const userRoutes = require('./routes/account');
 const mainRoutes = require('./routes/main');
+const sellerRoutes = require('./routes/seller');
 
 app.use('/api', mainRoutes);
 app.use('/api/accounts', userRoutes);
+app.use('/api/seller', sellerRoutes);
 
 app.listen(config.port, err => {
     console.log("\x1b[33m", `App working on: ${config.port}, update`);

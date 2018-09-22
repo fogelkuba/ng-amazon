@@ -9,4 +9,4 @@ const multerS3 = require('multer-s3');
 const {accessKeyId, secretAccessKey} = config.aws;
 const s3 = new aws.S3({accessKeyId, secretAccessKey});
 
-mudule.expoerts = router;
+module.exports = router;

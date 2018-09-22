@@ -11,4 +11,4 @@ const ProductSchema = new Schema ({
     created: {type: Date, default: Date.now},
 });
 
-module.exports = mongoose.model('Product', PproductSchema);
+module.exports = mongoose.model('Product', ProductSchema);
