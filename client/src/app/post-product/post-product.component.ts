@@ -84,7 +84,7 @@ export class PostProductComponent implements OnInit {
                         form.append(key, this.product[key]);
                     }
                 }
-            }
+            };
             this.rest.post('/api/seller/products', form)
                 .subscribe(
                     (response) => {
