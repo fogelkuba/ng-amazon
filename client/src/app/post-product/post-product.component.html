@@ -62,14 +62,14 @@
 
                     <div class="form-group">
                         <div class="custom-file">
-                            <label class="form-control-label">
-                                Upload Image
+                            <label class="custom-file-label">
+                                {{ !product.product_picture ? 'Upload Image' : product.product_picture.name }}
                             </label>
                             <input type="file"
                                    name="file"
                                    accept="image/*"
                                    class="custom-file-input"
-                                   (change)="fileChange($event)"
+                                   (change)="fileChange($event);"
                             >
                         </div>
                     </div>
