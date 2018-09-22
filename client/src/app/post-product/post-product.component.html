@@ -41,8 +41,25 @@
                                 name="categoryId"
                                 class="custom-select"
                                 [(ngModel)]="product.price">
+                            <option *ngFor="let category of categories"
+                                    [value]="category._id">
+                                {{category.name}}
+                            </option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label">
+                            Description
+                        </label>
+                        <textarea type="number"
+                               name="title"
+                               class="form-control"
+                               rows="5"
+                               [(ngModel)]="product.description">
+                        </textarea>
+                    </div>
+
                 </form>
             </div>
         </div>
