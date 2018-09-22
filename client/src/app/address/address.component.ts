@@ -17,7 +17,7 @@ export class AddressComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.rest.get('http://localhost:3030/api/accounts/address')
+        this.rest.get('/api/accounts/address')
             .subscribe(
                 (response) => {
                     if (JSON.stringify(response['address']) === '{}' && this.data.message === '') {
@@ -34,7 +34,7 @@ export class AddressComponent implements OnInit {
     updateAddress() {
         this.btnDisabled = true;
         this.rest.post(
-            'http://localhost:3030/api/accounts/address', this.currentAddress)
+            '/api/accounts/address', this.currentAddress)
             .subscribe(
                 (response) => {
                     response['success']

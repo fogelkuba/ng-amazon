@@ -36,7 +36,7 @@ export class DataService {
 
     async getProfile() {
         if (localStorage.getItem('token')) {
-            this.rest.get('http://localhost:3030/api/accounts/profile')
+            this.rest.get('/api/accounts/profile')
                 .subscribe(
                     (response) => {
                         console.log(response);

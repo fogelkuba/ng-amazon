@@ -6,6 +6,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class RestApiService {
 
+    baseUlr = 'http://localhost:3030';
+
     constructor(private http: HttpClient) {
     }
 
@@ -15,10 +17,10 @@ export class RestApiService {
     }
 
     get(link: string) {
-        return this.http.get(link, { headers: this.getHeaders() });
+        return this.http.get(this.baseUlr + link, { headers: this.getHeaders() });
     }
 
     post(link: string, body: any) {
-        return this.http.post(link, body, { headers: this.getHeaders() });
+        return this.http.post(this.baseUlr + link, body, { headers: this.getHeaders() });
     }
 }

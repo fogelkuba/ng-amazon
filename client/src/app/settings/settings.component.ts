@@ -62,7 +62,7 @@ export class SettingsComponent implements OnInit {
 
         if (this.validate(this.currentSettings)) {
             this.rest.post(
-                'http://localhost:3030/api/accounts/profile',
+                '/api/accounts/profile',
                 {
                     name: this.currentSettings['name'],
                     email: this.currentSettings['email'],
