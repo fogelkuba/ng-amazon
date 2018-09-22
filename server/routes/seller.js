@@ -37,7 +37,7 @@ router.route('/products')
         product.image = req.file.location;
 
         product.save();
-        
+
         res.json({
             success: true,
             message: 'Product added'
