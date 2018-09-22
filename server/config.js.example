@@ -1,0 +1,10 @@
+module.exports = {
+    database: 'mongodb://*****',
+    port: 3030,
+    secret: '*****',
+    aws: {
+        accessKeyId: '***',
+        secretAccessKey: '***',
+        consoleLoginLink: '***'
+    }
+};
