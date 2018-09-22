@@ -49,8 +49,6 @@ router.route('/products')
         product.description = req.body.description;
         product.image = req.file.location;
 
-        console.log('owner:', product.owner);
-
         product.save();
 
         res.json({
