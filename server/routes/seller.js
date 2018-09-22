@@ -16,7 +16,7 @@ const upload = multer({
         s3: s3,
         bucket: 'angular-amazono',
         metadata: function (req, file, cb) {
-            cb(null, {fieldname: file.fieldname})
+            cb(null, {fieldName: file.fieldname})
         },
         key: function (req, file, cb) {
             cb(null, Date.now().toString())
