@@ -27,8 +27,8 @@ app.use(cors());
 //     })
 // });
 
-const userRoutes = require('./routes/account');
 const mainRoutes = require('./routes/main');
+const userRoutes = require('./routes/account');
 const sellerRoutes = require('./routes/seller');
 
 app.use('/api', mainRoutes);
