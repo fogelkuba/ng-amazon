@@ -33,7 +33,7 @@ router.route('/products')
         product.category = req.body.categoryId;
         product.title = req.body.title;
         product.price = req.body.price;
-        product.description = req.body;
+        product.description = req.body.description;
         product.image = req.file.location;
 
         product.save();
