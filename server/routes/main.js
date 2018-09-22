@@ -17,7 +17,7 @@ router.route('/categories')
         category.save();
         res.json({
             success: true,
-            message: 'Success - Category Post'
+            message: `Category: ${req.body.category} succesfully added`
         });
     });
 
