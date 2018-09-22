@@ -89,7 +89,9 @@ export class PostProductComponent implements OnInit {
                 .subscribe(
                     (response) => {
                         if (response['success']) {
-                            this.categories = response['categories'];
+                            // this.categories = response['categories'];
+                            const msg = response['message'];
+                            this.data.success(msg)
                         }
                         else {
                             const msg = response['message'];
@@ -103,6 +105,7 @@ export class PostProductComponent implements OnInit {
                 )
         }
         this.btnDisabled = false;
+        // this.fetchCategories();
     }
 
 }
