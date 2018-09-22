@@ -14,6 +14,22 @@ export class CategoriesComponent implements OnInit {
   constructor(private data: DataService, private rest: RestApiService) { }
 
   ngOnInit() {
+      this.rest.get('/api/categories')
+          .subscribe(
+              (response) => {
+                if (response['success']) {
+                  this.categories = response['categories'];
+                }
+                else {
+                  const msg = response['message'];
+                  this.data.error(msg)
+                }
+              },
+              (error) => {
+                  const err = error['message'];
+                  this.data.error(err);
+              }
+          )
   }
 
 }
