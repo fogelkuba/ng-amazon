@@ -39,7 +39,7 @@ router.route('/products')
         product.save();
         res.json({
             success: true,
-            message: 'Product uploaded'
+            message: 'Product added'
         })
     });
 
