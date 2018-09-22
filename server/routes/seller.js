@@ -13,10 +13,10 @@ const checkJWT = require('../middleware/check-jwt');
 
 const upload = multer({
     storage: multerS3({
-        s3,
+        s3: s3,
         bucket: 'angular-amazono',
         metadata: function (req, file, cb) {
-            cb(null, {fieldName: file.fieldName})
+            cb(null, {fieldname: file.fieldname})
         },
         key: function (req, file, cb) {
             cb(null, Date.now().toString())
@@ -28,14 +28,6 @@ router.route('/products')
     .get()
     .post([checkJWT, upload.single('product_picture')], (req, res, next) => {
         let product = new Product();
-        // product = {
-        //     owner: req.decoded.user_id,
-        //     category: req.body.categoryId,
-        //     title: req.body.title,
-        //     price: req.body.price,
-        //     description: req.body,
-        //     image: req.file.location
-        // };
 
         product.owner = req.decoded.user_id;
         product.category = req.body.categoryId;
@@ -43,7 +35,9 @@ router.route('/products')
         product.price = req.body.price;
         product.description = req.body;
         product.image = req.file.location;
+
         product.save();
+        
         res.json({
             success: true,
             message: 'Product added'
