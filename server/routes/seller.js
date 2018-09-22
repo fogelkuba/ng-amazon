@@ -26,6 +26,21 @@ const upload = multer({
 
 router.route('/products')
     .get()
-    .post()
+    .post([checkJWT, upload.single('product_picture')], (req, res, next) => {
+        let product = new Product();
+        product = {
+            owner: req.decoded.user_id,
+            category: req.body.categoryId,
+            title: req.body.title,
+            price: req.body.price,
+            description: req.body,
+            image: req.file.location
+        };
+        product.save();
+        res.json({
+            success: true,
+            message: 'Product uploaded'
+        })
+    });
 
 module.exports = router;
