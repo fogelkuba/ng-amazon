@@ -9,6 +9,8 @@ const multerS3 = require('multer-s3');
 const {accessKeyId, secretAccessKey} = config.aws;
 const s3 = new aws.S3({accessKeyId, secretAccessKey});
 
+const checkJWT = require('../middleware/check-jwt');
+
 const upload = multer({
     storage: multerS3({
         s3,
@@ -21,5 +23,9 @@ const upload = multer({
         }
     })
 });
+
+router.route('/products')
+    .get()
+    .post()
 
 module.exports = router;
