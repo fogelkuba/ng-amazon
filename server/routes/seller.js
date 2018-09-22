@@ -28,14 +28,21 @@ router.route('/products')
     .get()
     .post([checkJWT, upload.single('product_picture')], (req, res, next) => {
         let product = new Product();
-        product = {
-            owner: req.decoded.user_id,
-            category: req.body.categoryId,
-            title: req.body.title,
-            price: req.body.price,
-            description: req.body,
-            image: req.file.location
-        };
+        // product = {
+        //     owner: req.decoded.user_id,
+        //     category: req.body.categoryId,
+        //     title: req.body.title,
+        //     price: req.body.price,
+        //     description: req.body,
+        //     image: req.file.location
+        // };
+
+        product.owner = req.decoded.user_id;
+        product.category = req.body.categoryId;
+        product.title = req.body.title;
+        product.price = req.body.price;
+        product.description = req.body;
+        product.image = req.file.location;
         product.save();
         res.json({
             success: true,
