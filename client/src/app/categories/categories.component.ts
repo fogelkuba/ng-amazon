@@ -60,6 +60,7 @@ export class CategoriesComponent implements OnInit {
                 }
             );
         this.btnDisabled = false;
+        this.newCategory = '';
     }
 
 }
