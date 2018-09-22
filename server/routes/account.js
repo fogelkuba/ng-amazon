@@ -120,7 +120,6 @@ router.route('/address')
 
     .post(checkJWT, (req, res, next) => {
         User.findOne({_id: req.decoded.user._id}, (err, user) => {
-            if (err) return next(err);
 
             if (req.body.addr1) user.address.addr1 = req.body.addr1;
             if (req.body.addr2) user.address.addr2 = req.body.addr2;
