@@ -1,3 +1,50 @@
-<p>
-  post-product works!
-</p>
+<section id="postProduct">
+    <div class="container p-5">
+        <h4 class="display-4">
+            Post a Product for Sales
+        </h4>
+        <hr>
+        <app-message></app-message>
+        <div *ngIf="!categories">
+            <div class="text-center display-3 mt-5">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+        </div>
+        <div *ngIf="categories" class="card bg-light">
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label class="form-control-label">
+                            Title
+                        </label>
+                        <input type="text"
+                               name="title"
+                               class="form-control"
+                               [(ngModel)]="product.title">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label">
+                            Price
+                        </label>
+                        <input type="number"
+                               name="title"
+                               class="form-control"
+                               [(ngModel)]="product.price">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label">
+                            Category
+                        </label>
+                        <select type="number"
+                                name="categoryId"
+                                class="custom-select"
+                                [(ngModel)]="product.price">
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
