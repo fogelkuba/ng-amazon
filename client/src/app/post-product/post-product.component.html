@@ -40,7 +40,7 @@
                         <select type="number"
                                 name="categoryId"
                                 class="custom-select"
-                                [(ngModel)]="product.price">
+                                [(ngModel)]="product.categoryId">
                             <option *ngFor="let category of categories"
                                     [value]="category._id">
                                 {{category.name}}
@@ -60,6 +60,20 @@
                         </textarea>
                     </div>
 
+                    <div class="form-group">
+                        <div class="custom-file">
+                            <label class="form-control-label">
+                                Upload Image
+                            </label>
+                            <input type="file"
+                                   name="file"
+                                   accept="image/*"
+                                   class="custom-file-input"
+                                   (change)="fileChange($event)"
+                            >
+                        </div>
+                    </div>
+                    <button class="btn btn-success" (click)="postProduct()" [disabled]="btnDisabled">Add Product</button>
                 </form>
             </div>
         </div>
