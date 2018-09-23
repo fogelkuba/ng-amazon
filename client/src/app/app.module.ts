@@ -21,6 +21,7 @@ import { AddressComponent } from './address/address.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { UserProductsComponent } from './user-products/user-products.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import { UserProductsComponent } from './user-products/user-products.component';
         AddressComponent,
         CategoriesComponent,
         PostProductComponent,
-        UserProductsComponent
+        UserProductsComponent,
+        CategoryComponent
     ],
     imports: [
         BrowserModule,
