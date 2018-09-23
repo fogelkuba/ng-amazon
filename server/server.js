@@ -21,12 +21,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('dev'));
 app.use(cors());
 
-// app.get('/', (req, res, next) => {
-//     res.json({
-//         user: 'Jay Eff',
-//     })
-// });
-
 const mainRoutes = require('./routes/main');
 const userRoutes = require('./routes/account');
 const sellerRoutes = require('./routes/seller');
