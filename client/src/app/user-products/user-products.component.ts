@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import {DataService} from "../data.service";
+import {RestApiService} from "../rest-api.service";
+
 @Component({
   selector: 'app-user-products',
   templateUrl: './user-products.component.html',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProductsComponent implements OnInit {
 
-  constructor() { }
+  products: any;
+
+  constructor(private data: DataService, private rest:RestApiService) { }
 
   ngOnInit() {
   }
