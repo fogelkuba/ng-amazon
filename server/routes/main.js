@@ -87,12 +87,12 @@ router.get('/categories/:id', (req, res, next) => {
         let totalProducts = results[0];
         let products = results[1];
         let category = results[2];
-
+        console.log(results[2]);
         res.json({
             success: true,
             message: `Category: ${category.name} / ${category._id}`,
             products,
-            categoryName: products[0].category.name,
+            categoryName: category.name,
             totalProducts,
             pages: Math.ceil((totalProducts / pageSize))
         })
