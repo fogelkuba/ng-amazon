@@ -22,6 +22,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { UserProductsComponent } from './user-products/user-products.component';
 import { CategoryComponent } from './category/category.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { CategoryComponent } from './category/category.component';
         CategoriesComponent,
         PostProductComponent,
         UserProductsComponent,
-        CategoryComponent
+        CategoryComponent,
+        ProductComponent
     ],
     imports: [
         BrowserModule,
