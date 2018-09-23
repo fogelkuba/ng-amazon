@@ -33,6 +33,17 @@ router.get('/categories/:id', (req, res, next) => {
                 let totalProducts = count;
                 callback(err, totalProducts);
             });
+        },
+        function(totalProducts, callback) {
+            Product.find({category: req.params.id})
+                .skip(pageSize * page)
+                .limit(pageSize)
+                .populate('category')
+                .populate('owner')
+                .exec((err, products) => {
+                    if (err) return next(err);
+                    callback(err, products, totalProducts);
+                });
         }
     ])
 
