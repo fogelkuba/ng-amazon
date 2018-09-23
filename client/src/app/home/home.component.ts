@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
             .subscribe(
                 (response) => {
                     response['success']
-                        ? this.products = response['product']
+                        ? this.products = response['products']
                         : this.data.error('Could not fetch products');
                 },
                 (err) => {
