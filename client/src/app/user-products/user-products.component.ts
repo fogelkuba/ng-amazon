@@ -15,6 +15,7 @@ export class UserProductsComponent implements OnInit {
   constructor(private data: DataService, private rest:RestApiService) { }
 
   ngOnInit() {
+    this.fetchProducts();
   }
 
   fetchProducts() {
