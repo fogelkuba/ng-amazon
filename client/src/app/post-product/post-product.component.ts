@@ -67,6 +67,10 @@ export class PostProductComponent implements OnInit {
         this.product.product_picture = event.target.files[0];
     }
 
+    fileRemove() {
+        this.product.product_picture = null;
+    }
+
     postProduct() {
         this.btnDisabled = true;
 
