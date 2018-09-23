@@ -52,11 +52,11 @@ export class PostProductComponent implements OnInit {
 
     validate(product) {
         let validation = false;
-        !product.title ? this.data.error('Please enter title') : '';
-        !product.price ? this.data.error('Please enter price') : '';
-        !product.categoryId ? this.data.error('Please select category') : '';
-        !product.description ? this.data.error('Please enter description') : '';
         !product.product_picture ? this.data.error('Please select product image') : '';
+        !product.description ? this.data.error('Please enter description') : '';
+        !product.categoryId ? this.data.error('Please select category') : '';
+        !product.price ? this.data.error('Please enter price') : '';
+        !product.title ? this.data.error('Please enter title') : '';
         if (product.title && product.price && product.categoryId && product.description && product.product_picture) {
             validation = true;
         }
@@ -93,7 +93,6 @@ export class PostProductComponent implements OnInit {
                 .subscribe(
                     (response) => {
                         if (response['success']) {
-                            // this.categories = response['categories'];
                             const msg = response['message'];
                             this.data.success(msg)
                         }
