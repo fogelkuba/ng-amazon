@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Category = require('../models/category');
 const Product = require('../models/product');
-
+const async = require('async');
 
 router.route('/categories')
     .get((req, res, next) => {
@@ -27,14 +27,14 @@ router.get('/categories/:id', (req, res, next) => {
     const pageSize = 10;
     const page = req.query.page;
 
-    async.waterfall([
+    async.parallel([
         function (callback) {
             Product.count({category: req.params.id}, (err, count) => {
                 let totalProducts = count;
                 callback(err, totalProducts);
             });
         },
-        function(totalProducts, callback) {
+        function(callback) {
             Product.find({category: req.params.id})
                 .skip(pageSize * page)
                 .limit(pageSize)
@@ -42,23 +42,29 @@ router.get('/categories/:id', (req, res, next) => {
                 .populate('owner')
                 .exec((err, products) => {
                     if (err) return next(err);
-                    callback(err, products, totalProducts);
+                    callback(err, products);
                 });
         },
-        function(products, totalProducts, callback) {
+        function(callback) {
             Category.findOne({ _id: req.params.id }, (err, category) => {
-                res.json({
-                    success: true,
-                    message: `category: ${category.name} / ${_id}`,
-                    products,
-                    categoryName: products[0].category.name,
-                    totalProducts,
-                    pages: Math.ceil((totalProducts / pageSize))
-                })
+               callback(err, category)
             })
         }
-    ])
-    
+    ], function(err, results) {
+        let totalProducts = results[0];
+        let products = results[1];
+        let category = results[2];
+
+        res.json({
+            success: true,
+            message: `Category: ${category.name} / ${category._id}`,
+            products,
+            categoryName: products[0].category.name,
+            totalProducts,
+            pages: Math.ceil((totalProducts / pageSize))
+        })
+    })
+
 });
 
 module.exports = router;
