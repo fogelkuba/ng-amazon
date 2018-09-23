@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const Category = require('../models/category');
+const Product = require('../models/product');
+
 
 router.route('/categories')
     .get((req, res, next) => {
@@ -29,7 +31,7 @@ router.get('/categories/:id', (req, res, next) => {
             Product.count({category: req.params.id}, (err, totalProducts) => {
                 res.json({
                     success: true,
-                    message: `category ${req.params.id}`,
+                    message: `category: ${products[0].category.name} / ${req.params.id}`,
                     products,
                     categoryName: products[0].category.name,
                     totalProducts,
