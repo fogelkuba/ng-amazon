@@ -20,6 +20,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { AddressComponent } from './address/address.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PostProductComponent } from './post-product/post-product.component';
+import { UserProductsComponent } from './user-products/user-products.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { PostProductComponent } from './post-product/post-product.component';
         SettingsComponent,
         AddressComponent,
         CategoriesComponent,
-        PostProductComponent
+        PostProductComponent,
+        UserProductsComponent
     ],
     imports: [
         BrowserModule,

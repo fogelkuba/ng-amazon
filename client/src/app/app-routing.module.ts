@@ -11,6 +11,7 @@ import {SettingsComponent} from "./settings/settings.component";
 import {AddressComponent} from "./address/address.component";
 import {CategoriesComponent} from "./categories/categories.component";
 import {PostProductComponent} from "./post-product/post-product.component";
+import {UserProductsComponent} from "./user-products/user-products.component";
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
     {path: 'profile/settings', component: SettingsComponent, canActivate: [AuthGuardService]},
     {path: 'profile/address', component: AddressComponent, canActivate: [AuthGuardService]},
     {path: 'profile/postproduct', component: PostProductComponent, canActivate: [AuthGuardService]},
+    {path: 'profile/myproducts', component: UserProductsComponent, canActivate: [AuthGuardService]},
     {path: '**', redirectTo: ''}
 ];
 
