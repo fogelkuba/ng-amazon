@@ -15,7 +15,7 @@ export class CategoryComponent implements OnInit {
     category: any;
     page = 1;
 
-    protected pageSize = 10;
+    public pageSize = 10;
 
     constructor(private data: DataService,
                 private rest: RestApiService,
@@ -29,11 +29,11 @@ export class CategoryComponent implements OnInit {
         })
     }
 
-    getProducts(eveent ?:any) {
+    getProducts(event ?:any) {
         if (event) {
             this.category = null;
         }
-        this.rest.get(`/api/categories/${this.categoryId}?page=${this.page - 1}`)
+        this.rest.get(`/api/categories/${this.categoryId}?page=${this.page}`)
             .subscribe(
                 (response) => {
                     response['success'] ? this.category = response : this.data.error(response['message'])

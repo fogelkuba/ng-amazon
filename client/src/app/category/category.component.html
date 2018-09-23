@@ -35,7 +35,7 @@
                 </div>
                 <hr>
             </div>
-            <ngb-pagination [collectionSize]="category.totalProducts" [pageSize]="10" [(page)]="page" (pageChange)="getProducts($event)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="category.totalProducts" [pageSize]="pageSize" [(page)]="page" (pageChange)="getProducts($event)"></ngb-pagination>
         </div>
     </div>
 </section>
