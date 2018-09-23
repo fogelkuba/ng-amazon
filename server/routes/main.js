@@ -44,6 +44,18 @@ router.get('/categories/:id', (req, res, next) => {
                     if (err) return next(err);
                     callback(err, products, totalProducts);
                 });
+        },
+        function(products, totalProducts, callback) {
+            Category.findOne({ _id: req.params.id }, (err, category) => {
+                res.json({
+                    success: true,
+                    message: `category: ${category.name} / ${_id}`,
+                    products,
+                    categoryName: products[0].category.name,
+                    totalProducts,
+                    pages: Math.ceil((totalProducts / pageSize))
+                })
+            })
         }
     ])
 
