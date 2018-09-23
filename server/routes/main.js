@@ -25,20 +25,31 @@ router.route('/categories')
 
 router.get('/categories/:id', (req, res, next) => {
     const pageSize = 10;
-    Product.find({category: req.params.id})
-        .populate('category')
-        .exec((err, products) => {
-            Product.count({category: req.params.id}, (err, totalProducts) => {
-                res.json({
-                    success: true,
-                    message: `category: ${products[0].category.name} / ${req.params.id}`,
-                    products,
-                    categoryName: products[0].category.name,
-                    totalProducts,
-                    pages: Math.ceil((totalProducts / pageSize))
-                });
+    const page = req.query.page;
+
+    async.waterfall([
+        function (callback) {
+            Product.count({category: req.params.id}, (err, count) => {
+                let totalProducts = count;
+                callback(err, totalProducts);
             });
-        });
+        }
+    ])
+
+    // Product.find({category: req.params.id})
+    //     .populate('category')
+    //     .exec((err, products) => {
+    //         Product.count({category: req.params.id}, (err, totalProducts) => {
+    //             res.json({
+    //                 success: true,
+    //                 message: `category: ${products[0].category.name} / ${req.params.id}`,
+    //                 products,
+    //                 categoryName: products[0].category.name,
+    //                 totalProducts,
+    //                 pages: Math.ceil((totalProducts / pageSize))
+    //             });
+    //         });
+    //     });
 });
 
 module.exports = router;
