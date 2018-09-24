@@ -5,6 +5,7 @@ const User = require('../models/user');
 const config = require('../config');
 const checkJWT = require('../middleware/check-jwt');
 
+
 router.post('/signup', (req, res, next) => {
     let user = new User();
     user.name = req.body.name;
