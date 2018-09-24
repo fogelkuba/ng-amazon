@@ -18,7 +18,7 @@ router.post('/signup', (req, res, next) => {
         if (existingUser) {
             res.json({
                 success: false,
-                message: 'Account with this mail alreaddy exists'
+                message: 'Account with this mail already exists'
             })
         } else {
             user.save();
