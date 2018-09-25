@@ -9,8 +9,13 @@ import {RestApiService} from "../rest-api.service";
     styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-
+    myReview = {
+        title: '',
+        description: '',
+        rating: 0,
+    };
     product: any;
+    btnDisabled = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -35,5 +40,25 @@ export class ProductComponent implements OnInit {
                 )
         })
 
+    }
+
+    async postReview() {
+        this.btnDisabled = true;
+        this.rest.post('/api/review', {
+            productId: this.product._id,
+            title: this.myReview.title,
+            description: this.myReview.description,
+            rating: this.myReview.rating,
+        }).subscribe(
+            (response) => {
+                response['success']
+                    ? this.data.success(response['message'])
+                    : this.data.error(response['message']);
+                this.btnDisabled = false;
+            },
+            (error) => {
+                this.data.error(error['message']);
+            }
+        )
     }
 }
