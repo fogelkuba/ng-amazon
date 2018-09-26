@@ -24,10 +24,12 @@ app.use(cors());
 const mainRoutes = require('./routes/main');
 const userRoutes = require('./routes/account');
 const sellerRoutes = require('./routes/seller');
+const productSearchRoutes = require('./routes/product-serch');
 
 app.use('/api', mainRoutes);
 app.use('/api/accounts', userRoutes);
 app.use('/api/seller', sellerRoutes);
+app.use('/api/search', productSearchRoutes);
 
 app.listen(config.port, err => {
     console.log("\x1b[33m", `App working on: ${config.port}, update`);
