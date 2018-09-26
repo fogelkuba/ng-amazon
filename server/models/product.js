@@ -57,7 +57,7 @@ ProductSchema.plugin(mongooseAlgolia, {
         }
     },
     virtuals: {
-        averageRating: function(doc) {
+        averageRatings: function(doc) {
             let rating = 0;
             if (doc.reviews.length == 0) {
                 rating = 0;
