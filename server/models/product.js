@@ -43,20 +43,34 @@ ProductSchema.plugin(mongooseAlgolia, {
     appId: appId,
     apiKey: adminApiKey,
     indexName: indexName,
-    selector: '',
+    selector: '_id title image reviews description price owner created',
     populate: {
         path: 'owner reviews',
         select: 'name rating'
     },
     default: {
-
+        author: 'unknown'
     },
     mappings: {
-
+        title: function(value) {
+            return`${value}`;
+        }
     },
     virtuals: {
-
-    }
+        averageRating: function(doc) {
+            let rating = 0;
+            if (doc.reviews.length == 0) {
+                rating = 0;
+            } else {
+                doc.reviews.map((review) => {
+                    rating += review.rating;
+                });
+                rating = rating / doc.reviews.length;
+            }
+            return rating;
+        }
+    },
+    debug: true
 
 });
 
