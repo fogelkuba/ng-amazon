@@ -74,4 +74,10 @@ ProductSchema.plugin(mongooseAlgolia, {
 
 });
 
-module.exports = mongoose.model('Product', ProductSchema);
+let Model = mongoose.model('Product', ProductSchema);
+Model.SyncToAlgolia();
+Model.SetAlgoliaSettings({
+    searchableAttributes: ['title']
+});
+
+module.exports = Model;
