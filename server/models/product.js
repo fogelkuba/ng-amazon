@@ -46,7 +46,7 @@ ProductSchema.plugin(mongooseAlgolia, {
     selector: '_id title image reviews description price owner created',
     populate: {
         path: 'owner reviews',
-        select: 'name rating'
+        select: 'name rating '
     },
     default: {
         author: 'unknown'
