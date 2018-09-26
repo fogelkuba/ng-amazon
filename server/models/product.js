@@ -56,8 +56,8 @@ ProductSchema.plugin(mongooseAlgolia, {
             return`${value}`;
         }
     },
-    virtuals: {
-        averageRatings: function(doc) {
+    virtual: {
+        averageRating: function(doc) {
             let rating = 0;
             if (doc.reviews.length == 0) {
                 rating = 0;
