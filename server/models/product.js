@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const config = require('../config');
 
 const deepPopulate = require('mongoose-deep-populate')(mongoose);
+const mongooseAlgolia = require('mongoose-algolia');
 
 const ProductSchema = new Schema({
 
@@ -34,5 +36,28 @@ ProductSchema
         return rating;
     });
 
+const {appId, adminApiKey, indexName} = config.algolia;
+
 ProductSchema.plugin(deepPopulate);
+ProductSchema.plugin(mongooseAlgolia, {
+    appId: appId,
+    apiKey: adminApiKey,
+    indexName: indexName,
+    selector: '',
+    populate: {
+        path: 'owner reviews',
+        select: 'name rating'
+    },
+    default: {
+
+    },
+    mappings: {
+
+    },
+    virtuals: {
+
+    }
+
+});
+
 module.exports = mongoose.model('Product', ProductSchema);
