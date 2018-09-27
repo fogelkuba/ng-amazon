@@ -103,7 +103,6 @@ router.get('/categories/:id', (req, res, next) => {
             pages: Math.ceil(totalProducts / perPage)
         });
     });
-
 });
 
 router.get('/product/:id', (req, res, next) => {
