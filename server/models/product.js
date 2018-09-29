@@ -71,7 +71,6 @@ ProductSchema.plugin(mongooseAlgolia, {
         }
     },
     debug: true
-
 });
 
 let Model = mongoose.model('Product', ProductSchema);
