@@ -12,6 +12,7 @@ export class SearchComponent implements OnInit {
 
   query: string;
   page = 1;
+  content: any;
 
   constructor(private rest: RestApiService,
               private data: DataService,
