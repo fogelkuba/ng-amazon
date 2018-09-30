@@ -37,7 +37,14 @@ export class SearchComponent implements OnInit {
   }
 
   getProducts() {
-    
+    this.rest.get(`/api/search?query=${this.query}&page=${this.page - 1}`).subscribe(
+        (response) => {
+          response['success'] ? this.content = response['content'] : this.data.error(response['message']);
+        },
+        (err) => {
+          this.data.error(err['message'])
+        }
+    )
   }
 
 }
