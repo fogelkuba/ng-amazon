@@ -18,6 +18,26 @@ export class SearchComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(res => {
+      this.query= res['query'];
+      this.page = 1;
+      this.getProducts();
+    })
+  }
+
+  get lower() {
+    return 1 + this.content.hitsPerPAge * this.content.page;
+  }
+
+  get upper() {
+    return Math.min(
+        this.content.hitsPerPage * (this.content.page * 1),
+        this.content.nbHits
+    )
+  }
+
+  getProducts() {
+    
   }
 
 }
