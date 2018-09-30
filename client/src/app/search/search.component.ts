@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
 
   get upper() {
     return Math.min(
-        this.content.hitsPerPage * (this.content.page * 1),
+        this.content.hitsPerPage * (this.content.page + 1),
         this.content.nbHits
     )
   }

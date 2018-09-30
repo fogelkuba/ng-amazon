@@ -1,6 +1,10 @@
 <section id="search">
   <div class="container p-3 p-md-5">
     <app-message></app-message>
-    
+    <div *ngIf="!content" class="m-auto">
+      <h1 class="text-center display-3 mt-5">
+        <i class="fa fa-spinner fa-spin"></i>
+      </h1>
+    </div>
   </div>
 </section>
