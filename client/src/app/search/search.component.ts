@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {RestApiService} from "../rest-api.service";
+import {DataService} from "../data.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  query: string;
+  page = 1;
+
+  constructor(private rest: RestApiService,
+              private data: DataService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
