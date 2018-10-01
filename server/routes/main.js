@@ -7,6 +7,7 @@ const stripe = require('stripe')(config.stripe.secretKey);
 const Category = require('../models/category');
 const Product = require('../models/product');
 const Review = require('../models/review');
+const Order = require('../models/order');
 
 const checkJWT = require('../middleware/check-jwt');
 
