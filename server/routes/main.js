@@ -2,7 +2,7 @@ const config = require('../config');
 
 const router = require('express').Router();
 const async = require('async');
-const stripe = require('stripe')()
+const stripe = require('stripe')(config.stripe.secretKey);
 
 const Category = require('../models/category');
 const Product = require('../models/product');
