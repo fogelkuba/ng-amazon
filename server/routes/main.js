@@ -159,7 +159,7 @@ router.post('/review', checkJWT, (req, res, next) => {
     ]);
 });
 
-router.post('/payment', (req, res, next) => {
+router.post('/payment', checkJWT, (req, res, next) => {
     const stripeToken = req.body.stipeToken;
     const currentCharges = Math.round(req.body.totalPrice * 100);
 
