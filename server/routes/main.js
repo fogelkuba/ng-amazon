@@ -1,5 +1,8 @@
+const config = require('../config');
+
 const router = require('express').Router();
 const async = require('async');
+const stripe = require('stripe')()
 
 const Category = require('../models/category');
 const Product = require('../models/product');
