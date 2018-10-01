@@ -159,5 +159,43 @@ router.post('/review', checkJWT, (req, res, next) => {
     ]);
 });
 
+router.post('/payment', (req, res, next) => {
+    const stripeToken = req.body.stipeToken;
+    const currentCharges = Math.round(req.body.totalPrice * 100);
+
+    stripe.customers
+        .create({
+            source: stripeToken.id
+        })
+        .then(function(customer){
+            return stripe.chargers.create({
+                amount: currentCharges,
+                currency: 'usd',
+                customer: customer.id
+            });
+        })
+        .then(function(charge) {
+            const products = req.body.products;
+
+            let order = new Order();
+            order.owner = req.decoded.user._id;
+            order.totalPrice = currentCharges;
+
+            products.map(product => {
+                order.products.push({
+                    product: product.product,
+                    quantity: product.quantity
+                })
+            });
+
+            order.save();
+            res.json({
+                success: true,
+                message: 'Successfully made payment'
+            })
+        })
+
+
+});
 
 module.exports = router;
