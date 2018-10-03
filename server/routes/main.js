@@ -194,8 +194,6 @@ router.post('/payment', checkJWT, (req, res, next) => {
                 message: 'Successfully made payment'
             })
         })
-
-
 });
 
 module.exports = router;
