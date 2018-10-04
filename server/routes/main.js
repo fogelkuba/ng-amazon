@@ -143,7 +143,6 @@ router.post('/review', checkJWT, (req, res, next) => {
         function(product) {
             let review = new Review();
             review.owner = req.decoded.user._id;
-
             if (req.body.title) review.title = req.body.title;
             if (req.body.description) review.description = req.body.description
             review.rating = req.body.rating;
