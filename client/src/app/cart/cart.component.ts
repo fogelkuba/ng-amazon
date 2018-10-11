@@ -47,7 +47,7 @@ export class CartComponent implements OnInit {
     this.cartItems.forEach(data => {
       this.quantities.push(1);
     });
-    this.handler = StripeCheckout.configure({
+    this.handler = (<any>window).StripeCheckout.configure({
       key: environment.stripeKey,
       image: 'assets/img/logo.png',
       locale: 'auto',
