@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NavigationStart, Router} from "@angular/router";
 import {RestApiService} from "./rest-api.service";
+import { JsonpCallbackContext } from '@angular/common/http/src/jsonp';
 
 @Injectable({
     providedIn: 'root'
@@ -49,4 +50,17 @@ export class DataService {
 
         }
     }
+
+    getCart() {
+        const cart = localStorage.getItem('cart');
+        return cart ? JSON.parse(cart): [];
+    }
+
+    addToCart(item: string) {
+        const cart: any = this.getCart();
+        if (cart.find(data => JSON.stringify(data) === JSON.stringify(item))) {
+
+        }
+    }
+    
 }
